@@ -3,6 +3,8 @@
 [homelab](https://github.com/June21621/homelab) k3s 클러스터에 GitOps로 배포되는 FastAPI 앱.
 지금은 배포 파이프라인 확인용 최소 페이지이고, 내용은 나중에 채운다.
 
+배포: main push → GitHub Actions가 테스트·이미지 빌드(태그 = 커밋 SHA) → homelab `gitops/apps/portfolio/overlays/*`의 `newTag` 변경 → ArgoCD 반영.
+
 ## 엔드포인트
 
 | 경로 | 설명 |
