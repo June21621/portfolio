@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>김준태 | 신입 클라우드 엔지니어</title>
+  <meta name="description" content="OpenStack 프라이빗 클라우드와 Kubernetes 위에서 IaC, CI/CD, 알림 기반 오토스케일링을 구축한 신입 클라우드 엔지니어 김준태의 포트폴리오">
+  <meta name="color-scheme" content="light dark">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1" defer></script>
+  <script src="main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+
+  <header class="site-header">
+    <nav class="container nav" aria-label="주요 메뉴">
+      <a class="nav-brand" href="#top">김준태</a>
+      <ul class="nav-links">
+        <li><a href="#about">소개</a></li>
+        <li><a href="#projects">프로젝트</a></li>
+        <li><a href="#skills">기술</a></li>
+        <li><a href="#history">이력</a></li>
+        <li><a class="nav-cta" href="#contact">연락하기</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero container" id="top">
+      <div class="hero-copy">
+        <p class="eyebrow">김준태 · 신입 클라우드 엔지니어</p>
+        <h1 class="hero-title">클라우드로 안정적이게,<br>자동화로 더 편하게</h1>
+        <p class="hero-sub">OpenStack 프라이빗 클라우드와 Kubernetes 위에서 IaC, CI/CD, 알림 기반 오토스케일링을 직접 구축했습니다.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#projects">프로젝트 보기 <i class="ph ph-arrow-down" aria-hidden="true"></i></a>
+          <a class="btn btn-ghost" href="https://github.com/June21621" rel="noopener"><i class="ph ph-github-logo" aria-hidden="true"></i> GitHub</a>
+        </div>
+      </div>
+      <figure class="hero-visual">
+        <img class="profile-photo" src="images/profile.jpg" width="449" height="567" alt="김준태 프로필 사진" fetchpriority="high">
+      </figure>
+    </section>
+
+    <!-- 소개: 일하는 방식 -->
+    <section class="section container" id="about" aria-labelledby="about-title">
+      <h2 class="section-title reveal" id="about-title">일하는 방식</h2>
+      <p class="section-lead reveal">클라우드 인프라 구축부터 운영과 자동화까지 맡는 클라우드 아키텍트로 성장하는 것이 목표입니다.</p>
+      <div class="traits">
+        <div class="trait reveal">
+          <h3><i class="ph ph-magnifying-glass" aria-hidden="true"></i> 원인을 끝까지 확인합니다</h3>
+          <p>예상하지 못한 장애가 생기면 계층을 나눠 원인을 찾습니다. 문서로만 알던 내용은 제약이 있는 환경에서 직접 구축하며 확인했습니다.</p>
+        </div>
+        <div class="trait reveal">
+          <h3><i class="ph ph-lightning" aria-hidden="true"></i> 반복 작업을 자동화합니다</h3>
+          <p>수동 프로비저닝은 코드로, 빌드부터 배포까지는 파이프라인으로 옮겼습니다. 장애는 사람이 찾기 전에 알림이 먼저 알려주도록 바꿨습니다.</p>
+        </div>
+        <div class="trait reveal">
+          <h3><i class="ph ph-notebook" aria-hidden="true"></i> 과정을 기록합니다</h3>
+          <p>구축 과정과 장애 대응을 팀 문서로 남겨 다음 사람이 같은 문제에서 막히지 않게 합니다. 학습 내용은 블로그에 정리해 공개합니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 프로젝트: 대표 1 + 보조 2 -->
+    <section class="section container" id="projects" aria-labelledby="projects-title">
+      <h2 class="section-title reveal" id="projects-title">프로젝트</h2>
+      <div class="bento">
+        <article class="project project-featured reveal">
+          <figure class="diagram">
+            <img src="images/carpayin-architecture.png" width="1154" height="472" loading="lazy" alt="CarPayIn 전체 아키텍처: AWS의 PMS, CarPayIn, MockPG VPC와 OpenStack의 MockCard 프로젝트가 VPC 피어링과 WireGuard로 연결된 구성">
+          </figure>
+          <div class="project-body">
+            <h3>OpenStack 기반 Private Cloud 인프라 <span class="project-sub">CarPayIn</span></h3>
+            <p>차량 QR 인증만으로 입차부터 결제까지 처리하는 주차 결제 시스템의 프라이빗 클라우드를 단일 물리 서버 위에 구축했습니다.</p>
+            <dl class="project-meta">
+              <div><dt>기간</dt><dd>2026.04 - 2026.06</dd></div>
+              <div><dt>팀</dt><dd>5인</dd></div>
+              <div><dt>담당</dt><dd>Private Cloud 구축, IaC, CI/CD, 모니터링</dd></div>
+            </dl>
+            <ul class="highlights">
+              <li>물리 NIC이 하나뿐인 환경에서 dummy 인터페이스와 OVS로 External Network를 확보</li>
+              <li>Terraform은 프로비저닝, Ansible은 설정과 스케일링으로 나누고 apply는 수동 승인 게이트로 보호</li>
+              <li>AlertManager 알림을 FastAPI 어댑터가 받아 GitLab CI로 VM을 늘리고 줄이는 노드 오토스케일링 구현</li>
+            </ul>
+            <ul class="tags" aria-label="사용 기술">
+              <li>OpenStack</li><li>OVS</li><li>Terraform</li><li>Vault</li><li>Kubernetes</li><li>Prometheus</li><li>AlertManager</li>
+            </ul>
+            <div class="project-links">
+              <a class="link-arrow" href="https://github.com/June21621/Car-Pay-In-private" rel="noopener">GitHub <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
+              <a class="link-arrow" href="https://velog.io/@june21dev/CarPayIn-%ED%94%84%EB%9D%BC%EC%9D%B4%EB%B9%97-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C-%EA%B5%AC%EC%B6%95%EA%B8%B0-1%ED%8E%B8-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EA%B0%9C%EC%9A%94-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-%EC%84%A4%EA%B3%84" rel="noopener">구축기 8편 <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project project-tinted reveal">
+          <figure class="diagram">
+            <img src="images/telemetry-architecture.jpg" width="1440" height="720" loading="lazy" alt="텔레메트리 CQRS 아키텍처: 차량 이벤트가 Ingest API와 Kafka를 거쳐 MongoDB 쓰기 경로와 Redis 읽기 경로로 나뉘는 구성">
+          </figure>
+          <div class="project-body">
+            <h3>커넥티드카 텔레메트리 플랫폼</h3>
+            <p>Kafka를 경계로 쓰기와 읽기 경로를 나눈 Kubernetes 기반 CQRS 플랫폼입니다. Jenkins와 Harbor로 빌드부터 배포, 헬스체크까지 파이프라인으로 묶었습니다.</p>
+            <dl class="project-meta">
+              <div><dt>기간</dt><dd>2026.02 - 2026.03</dd></div>
+              <div><dt>팀</dt><dd>4인</dd></div>
+              <div><dt>담당</dt><dd>CI/CD, 컨테이너화와 배포, 시크릿 관리</dd></div>
+            </dl>
+            <ul class="tags" aria-label="사용 기술">
+              <li>Kubernetes</li><li>Helm</li><li>Jenkins</li><li>Harbor</li><li>Kafka</li>
+            </ul>
+            <div class="project-links">
+              <a class="link-arrow" href="https://github.com/June21621/Connected-Car-Telemetry" rel="noopener">GitHub <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
+              <a class="link-arrow" href="https://velog.io/@june21dev/series/%ED%98%84%EB%8C%80%EC%98%A4%ED%86%A0%EC%97%90%EB%B2%84-k8s-mini-project" rel="noopener">정리글 5편 <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project reveal">
+          <figure class="diagram">
+            <img src="images/recommend-architecture.png" width="3675" height="1725" loading="lazy" alt="장소 추천 시스템 아키텍처: 모바일과 React 앱이 Cognito와 인터넷 게이트웨이를 거쳐 EC2의 Spring 앱과 AI 서버, RDS로 연결되는 구성">
+          </figure>
+          <div class="project-body">
+            <h3>장소 추천 시스템 <span class="project-sub">졸업 프로젝트</span></h3>
+            <p>GPS 동선을 시간대별 히트맵으로 분석하고 협업 필터링 점수와 합산해 장소 Top-20을 추천하는 백엔드입니다. AWS EC2와 RDS로 배포했습니다.</p>
+            <dl class="project-meta">
+              <div><dt>기간</dt><dd>2025.01 - 2025.09</dd></div>
+              <div><dt>팀</dt><dd>6인</dd></div>
+              <div><dt>담당</dt><dd>백엔드 API, AWS 배포와 운영</dd></div>
+            </dl>
+            <ul class="tags" aria-label="사용 기술">
+              <li>Spring Boot</li><li>PostgreSQL</li><li>FastAPI</li><li>AWS</li>
+            </ul>
+            <div class="project-links">
+              <a class="link-arrow" href="https://github.com/anjsk11/recommendation" rel="noopener">GitHub <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 기술 -->
+    <section class="section container" id="skills" aria-labelledby="skills-title">
+      <h2 class="section-title reveal" id="skills-title">다루는 기술</h2>
+      <p class="section-lead reveal">진하게 표시한 기술은 프로젝트에서 더 깊이 다뤄 본 기술입니다.</p>
+      <div class="skill-groups">
+        <div class="skill-group reveal">
+          <h3>Cloud와 Infra</h3>
+          <ul class="tags tags-lg"><li class="is-strong">OpenStack</li><li class="is-strong">Terraform</li><li>AWS</li><li>Vault</li></ul>
+        </div>
+        <div class="skill-group reveal">
+          <h3>Container와 CI/CD</h3>
+          <ul class="tags tags-lg"><li class="is-strong">Kubernetes</li><li class="is-strong">Docker</li><li>Helm</li><li>Jenkins</li><li>GitLab CI/CD</li><li>Harbor</li></ul>
+        </div>
+        <div class="skill-group reveal">
+          <h3>Monitoring</h3>
+          <ul class="tags tags-lg"><li>Prometheus</li><li>Grafana</li><li>AlertManager</li></ul>
+        </div>
+        <div class="skill-group reveal">
+          <h3>Data와 OS</h3>
+          <ul class="tags tags-lg"><li class="is-strong">Linux</li><li>Kafka</li><li>PostgreSQL</li><li>MongoDB</li><li>Redis</li></ul>
+        </div>
+        <div class="skill-group reveal">
+          <h3>언어와 프레임워크</h3>
+          <ul class="tags tags-lg"><li class="is-strong">Java</li><li>Spring Boot</li><li>Python</li><li>FastAPI</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 이력 -->
+    <section class="section container" id="history" aria-labelledby="history-title">
+      <h2 class="section-title reveal" id="history-title">이력</h2>
+      <div class="history">
+        <ol class="timeline">
+          <li class="reveal">
+            <span class="timeline-date">2026.06</span>
+            <div>
+              <h3>부트캠프 우수 프로젝트상</h3>
+              <p>현대오토에버 SW스쿨 클라우드 트랙</p>
+            </div>
+          </li>
+          <li class="reveal">
+            <span class="timeline-date">2025.12 - 2026.06</span>
+            <div>
+              <h3>현대오토에버 SW스쿨 <span class="timeline-role">클라우드 트랙 3기 수료</span></h3>
+            </div>
+          </li>
+          <li class="reveal">
+            <span class="timeline-date">2019.03 - 2026.02</span>
+            <div>
+              <h3>상명대학교 <span class="timeline-role">컴퓨터과학전공 졸업</span></h3>
+            </div>
+          </li>
+        </ol>
+        <div class="certs reveal">
+          <h3>자격과 어학</h3>
+          <ul>
+            <li><span>정보처리기사</span><span class="cert-date">2026.06</span></li>
+            <li><span>리눅스마스터 2급</span><span class="cert-date">2026.04</span></li>
+            <li><span>토익스피킹 IM3</span><span class="cert-date">2025.09</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 연락 -->
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="container contact-inner reveal">
+        <div>
+          <h2 id="contact-title">채용이나 협업 제안은 메일로 받습니다</h2>
+          <ul class="contact-links">
+            <li><a href="https://github.com/June21621" rel="noopener"><i class="ph ph-github-logo" aria-hidden="true"></i> github.com/June21621</a></li>
+            <li><a href="https://velog.io/@june21dev/posts" rel="noopener"><i class="ph ph-article" aria-hidden="true"></i> velog.io/@june21dev</a></li>
+          </ul>
+        </div>
+        <a class="btn btn-primary btn-lg" href="mailto:kymoon4@naver.com"><i class="ph ph-envelope-simple" aria-hidden="true"></i> 연락하기</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span data-year>2026</span> 김준태</p>
+      <!-- 클러스터에서만 /version 응답으로 채워짐. 정적 호스팅(S3)에서는 숨겨진 채로 남는다 -->
+      <p class="deploy-info" data-deploy hidden></p>
+    </div>
+  </footer>
+</body>
+</html>
