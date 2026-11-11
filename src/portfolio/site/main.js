@@ -41,7 +41,65 @@ document.documentElement.classList.add("js");
   }
 })();
 
-// 3) 저작권 연도
+// 3) 프로젝트 상세 팝업. 카드(링크·버튼 제외)나 "자세히 보기"를 누르면 열린다.
+//    주소에 #project-... 가 붙어 있으면 해당 팝업을 바로 연다(링크 공유용).
+(() => {
+  const dialogs = new Map(
+    [...document.querySelectorAll("dialog.project-dialog")].map((d) => [d.id, d]),
+  );
+  if (!dialogs.size || typeof HTMLDialogElement !== "function") return;
+
+  let opener = null;
+
+  const open = (id, from) => {
+    const dialog = dialogs.get(id);
+    if (!dialog || dialog.open) return;
+    opener = from || null;
+    dialog.showModal();
+    dialog.querySelector(".dialog-body").scrollTop = 0;
+    document.documentElement.classList.add("dialog-open");
+    if (location.hash !== `#${id}`) history.replaceState(null, "", `#${id}`);
+  };
+
+  dialogs.forEach((dialog) => {
+    dialog.addEventListener("close", () => {
+      document.documentElement.classList.remove("dialog-open");
+      if (location.hash === `#${dialog.id}`) {
+        history.replaceState(null, "", location.pathname + location.search);
+      }
+      if (opener) opener.focus({ preventScroll: true });
+    });
+    // 바깥(배경)을 누르면 닫기
+    dialog.addEventListener("click", (e) => {
+      if (e.target === dialog) dialog.close();
+    });
+    dialog.querySelectorAll("[data-close]").forEach((btn) => {
+      btn.addEventListener("click", () => dialog.close());
+    });
+  });
+
+  document.querySelectorAll("[data-open]").forEach((btn) => {
+    btn.addEventListener("click", () => open(btn.dataset.open, btn));
+  });
+
+  document.querySelectorAll("[data-project]").forEach((card) => {
+    card.classList.add("is-clickable");
+    card.addEventListener("click", (e) => {
+      if (e.target.closest("a, button")) return;
+      if (window.getSelection && String(window.getSelection()).length) return;
+      open(card.dataset.project, card.querySelector("[data-open]"));
+    });
+  });
+
+  const fromHash = () => {
+    const id = decodeURIComponent(location.hash.slice(1));
+    if (dialogs.has(id)) open(id);
+  };
+  window.addEventListener("hashchange", fromHash);
+  fromHash();
+})();
+
+// 4) 저작권 연도
 document.querySelectorAll("[data-year]").forEach((el) => {
   el.textContent = String(new Date().getFullYear());
 });

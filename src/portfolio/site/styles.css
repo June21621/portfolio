@@ -422,6 +422,146 @@ a { color: inherit; text-decoration: none; }
 .footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; }
 .deploy-info { font-family: var(--font-mono); font-size: 0.8125rem; }
 
+/* 카드 클릭 */
+.btn-sm { padding: 7px 12px; font-size: 0.875rem; }
+.project.is-clickable { cursor: pointer; }
+.project-links { align-items: center; }
+
+/* 프로젝트 상세 팝업 */
+html.dialog-open { overflow: hidden; }
+.project-dialog {
+  width: min(880px, calc(100vw - 2 * var(--gutter)));
+  max-height: calc(100dvh - 48px);
+  margin: auto;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-box);
+  background: var(--bg);
+  color: var(--text);
+  box-shadow: 0 24px 64px oklch(0 0 0 / 0.35);
+  overflow: hidden;
+}
+.project-dialog[open] { display: flex; flex-direction: column; }
+.project-dialog::backdrop { background: oklch(0.15 0.01 250 / 0.6); backdrop-filter: blur(4px); }
+@media (max-width: 640px) {
+  .project-dialog { width: 100vw; max-width: 100vw; max-height: 100dvh; height: 100dvh; border-radius: 0; border: 0; }
+}
+.dialog-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+.dialog-head h2 { font-size: 1.25rem; letter-spacing: -0.02em; line-height: 1.35; }
+.dialog-close {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-ctl);
+  background: transparent;
+  color: var(--text);
+  font-size: 1.125rem;
+  cursor: pointer;
+  transition: background-color 0.2s var(--ease);
+}
+.dialog-close:hover { background: var(--surface); }
+.dialog-body {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 24px;
+  display: grid;
+  gap: 32px;
+}
+@media (min-width: 768px) {
+  .dialog-head { padding: 24px 32px; }
+  .dialog-body { padding: 28px 32px 40px; }
+}
+.dialog-lead { font-size: 1.0625rem; max-width: 70ch; }
+.dialog-body .diagram { border: 1px solid var(--border); border-radius: var(--radius-box); }
+.dialog-overview { display: grid; gap: 20px; }
+@media (min-width: 768px) {
+  .dialog-overview { grid-template-columns: 1fr 1fr; align-items: start; }
+}
+.dialog-overview .project-meta div { grid-template-columns: 56px 1fr; }
+.dialog-overview .project-meta a { color: var(--accent); word-break: break-all; }
+.review {
+  margin: 0;
+  padding: 16px 20px;
+  border-left: 3px solid var(--accent);
+  background: var(--surface);
+  border-radius: 0 var(--radius-ctl) var(--radius-ctl) 0;
+  color: var(--text-muted);
+  font-size: 0.9375rem;
+}
+.dialog-body section { display: grid; gap: 12px; }
+.dialog-body h3 { font-size: 1.125rem; letter-spacing: -0.015em; padding-top: 4px; }
+.dialog-body h4 { font-size: 1rem; margin-top: 4px; }
+.dialog-body section > ul { display: grid; gap: 8px; padding-left: 20px; list-style: disc; }
+.dialog-body section > ul li::marker { color: var(--accent); }
+.dialog-body section li, .dialog-body section p { max-width: 72ch; }
+.dialog-body section p a { color: var(--accent); }
+.dialog-body em { color: var(--text-muted); }
+.dialog-body code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  word-break: break-word;
+}
+.muted { color: var(--text-muted); }
+
+.shot { margin: 0; border: 1px solid var(--border); border-radius: var(--radius-ctl); overflow: hidden; background: oklch(0.99 0.002 250); }
+.shot img { display: block; width: 100%; height: auto; }
+.shot-narrow { max-width: 480px; }
+.shot-grid { display: grid; gap: 12px; }
+@media (min-width: 768px) {
+  .shot-grid { grid-template-columns: 1fr 1fr; align-items: start; }
+}
+
+.post-list { display: grid; gap: 4px; }
+.post-list a {
+  display: flex;
+  gap: 12px;
+  padding: 6px 0;
+  transition: color 0.2s var(--ease);
+}
+.post-list a:hover { color: var(--accent); }
+.post-list span { flex: none; width: 36px; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+
+.trouble {
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-box);
+  background: var(--surface);
+}
+.trouble + .trouble { margin-top: 4px; }
+.trouble h4 { display: flex; align-items: flex-start; gap: 8px; margin: 0 0 14px; line-height: 1.45; }
+.trouble h4 .ph { color: var(--accent); margin-top: 3px; }
+.trouble dl { margin: 0; display: grid; gap: 10px; }
+@media (min-width: 768px) {
+  .trouble dl { grid-template-columns: 72px 1fr; gap: 10px 16px; }
+}
+.trouble dt { font-weight: 650; font-size: 0.875rem; color: var(--accent); padding-top: 2px; }
+.trouble dd { margin: 0; color: var(--text-muted); font-size: 0.9375rem; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .project-dialog[open] { animation: dialog-in 0.35s var(--ease); }
+  .project-dialog[open]::backdrop { animation: fade-in 0.35s var(--ease); }
+}
+@keyframes dialog-in {
+  from { opacity: 0; transform: translateY(12px) scale(0.985); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+
 /* 스크롤 진입 모션: JS가 켜졌고 모션 감소 설정이 없을 때만 */
 @media (prefers-reduced-motion: no-preference) {
   .js .reveal {
