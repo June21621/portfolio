@@ -20,6 +20,18 @@ def test_index_shows_version_and_pod():
     assert "p-1" in res.text
 
 
+def test_version_returns_build_info_as_json():
+    # 정적 페이지(site/)가 fetch해서 화면에 보여 줄 배포 정보
+    client = make_client(version="abc123", build_time="2026-11-12T00:00:00Z", pod_name="p-1")
+    res = client.get("/version")
+    assert res.status_code == 200
+    assert res.json() == {
+        "version": "abc123",
+        "build_time": "2026-11-12T00:00:00Z",
+        "pod": "p-1",
+    }
+
+
 def test_healthz_and_readyz():
     client = make_client()
     assert client.get("/healthz").status_code == 200
