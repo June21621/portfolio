@@ -37,6 +37,16 @@ def create_app(settings: Settings) -> FastAPI:
     def index() -> str:
         return page
 
+    build_info = {
+        "version": settings.version,
+        "build_time": settings.build_time,
+        "pod": settings.pod_name,
+    }
+
+    @app.get("/version")
+    def version() -> dict:
+        return build_info
+
     @app.get("/healthz")
     def healthz() -> dict:
         return {"status": "ok"}

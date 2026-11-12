@@ -10,6 +10,7 @@
 | 경로 | 설명 |
 |---|---|
 | `GET /` | 버전(git SHA)·빌드 시각·파드 이름 |
+| `GET /version` | 같은 정보를 JSON으로 (`version`, `build_time`, `pod`) |
 | `GET /healthz`, `GET /readyz` | liveness·readiness 프로브 |
 | `GET /metrics` | Prometheus 지표 (`http_requests_total`, `http_request_duration_seconds`) |
 | `POST /chaos/memory?mb=N` | 메모리 N MiB를 잡고 놓지 않음 (OOM 실험) |
