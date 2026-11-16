@@ -35,4 +35,5 @@ jobs:
     with:
       app: portfolio
       image: ghcr.io/june21621/portfolio
-    secrets: inherit
+    # 시크릿은 넘기지 않는다. 태그 갱신 App 키는 environment `tag-bump`(main만)에 있고,
+    # 재사용 워크플로의 bump job이 그 environment를 지정해 직접 읽는다
